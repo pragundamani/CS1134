@@ -4,7 +4,7 @@ from pathlib import Path
 import re
 
 # Base directory for all folders
-BASE_DIR = Path(r"c:/Users/beast/OneDrive/Documents/Obsi/studies/CS1134/labs hw").expanduser().resolve()
+BASE_DIR = Path(r"c:/Users\beast/paragon/studies/CS1134/labs hw").expanduser().resolve()
 
 def prompt_if_missing(folder_arg: str | None, number_arg: str | None) -> tuple[str, str]:
     folder = folder_arg or input(f"Enter folder: ").strip()
