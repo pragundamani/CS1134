@@ -7,7 +7,7 @@
 def e_approx(n):
     if n==0:return 0
     total, fact, num = 1, 1, 1
-    while num<=(n+1):
+    while num<=(n):
         # print(total,fact,num)
         fact *= num
         total += 1/fact

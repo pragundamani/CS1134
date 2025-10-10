@@ -7,9 +7,12 @@ def factors(num):
             results.append(i)
     for i in range((len(results)-2),0,-1):
         yield (num//results[i])
-    yield num
+    if num>1: 
+        yield num
 
-# for curr_factor in factors(100):
+
+
+# for curr_factor in factors(1):
 #     print(curr_factor)
 
 
