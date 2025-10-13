@@ -125,7 +125,7 @@ for i in range(1,5):
 #     arr_lst.pop()
 #     print(arr_lst)
 
-arr_lst.pop(1)
-print(arr_lst)
-arr_lst.pop(-1)
-print(arr_lst)
+# arr_lst.pop(1)
+# print(arr_lst)
+# arr_lst.pop(-1)
+# print(arr_lst)
