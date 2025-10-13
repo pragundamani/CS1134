@@ -114,9 +114,9 @@ class ArrayList:
             
             
             
-# arr_lst = ArrayList()
-# for i in range(1,5):
-#     arr_lst.append(i)
+arr_lst = ArrayList()
+for i in range(1,5):
+    arr_lst.append(i)
 # print(arr_lst)  
 # arr_lst.insert(2, 30)
 # print(arr_lst)
@@ -124,3 +124,8 @@ class ArrayList:
 # for i in range(3):
 #     arr_lst.pop()
 #     print(arr_lst)
+
+arr_lst.pop(1)
+print(arr_lst)
+arr_lst.pop(-1)
+print(arr_lst)
