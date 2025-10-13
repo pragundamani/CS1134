@@ -81,16 +81,39 @@ class ArrayList:
             self.data[i]=self.data[i-1]
         self.data[index]=val
         self.n += 1   
-    def pop(self):
-        if self.n==0:
-            raise IndexError('pop from empty list')
-        val = self.data[self.n-1]
-        self.data[self.n-1]=None
-        self.n-=1
-        if 0 <self.n<self.capacity//4:
-            self.resize(self.capacity//2)
-        return val
-
+    # def pop(self):
+        # if self.n==0:
+            # raise IndexError('pop from empty list')
+        # val = self.data[self.n-1]
+        # self.data[self.n-1]=None
+        # self.n-=1
+        # if 0 <self.n<self.capacity//4:
+            # self.resize(self.capacity//2)
+        # return val
+        
+    def pop(self, index=None):
+        if index is None:
+            if self.n==0:
+                raise IndexError('pop from empty list')
+            val = self.data[self.n-1]
+            self.data[self.n-1]=None
+            self.n-=1
+            if 0 <self.n<self.capacity//4:
+                self.resize(self.capacity//2)
+            return val
+        else:
+            if (not (-self.n<=index<= self.n-1)):
+                raise IndexError('invalid index')
+            if (index<0):
+                index=self.n+index
+            val=self.data[index]
+            for i in range(index,self.n-1):
+                self.data[i]=self.data[i+1]
+            self.data[self.n-1]=None
+            self.n-=1
+            
+            
+            
 # arr_lst = ArrayList()
 # for i in range(1,5):
 #     arr_lst.append(i)
