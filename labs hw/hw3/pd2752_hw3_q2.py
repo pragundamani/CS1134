@@ -91,14 +91,14 @@ class ArrayList:
             # self.resize(self.capacity//2)
         # return val
         
-    def pop(self, index=None):
+    def pop(self,index=None):
         if index is None:
             if self.n==0:
                 raise IndexError('pop from empty list')
             val = self.data[self.n-1]
             self.data[self.n-1]=None
             self.n-=1
-            if 0 <self.n<self.capacity//4:
+            if 0<self.n<self.capacity//4:
                 self.resize(self.capacity//2)
             return val
         else:
@@ -111,6 +111,9 @@ class ArrayList:
                 self.data[i]=self.data[i+1]
             self.data[self.n-1]=None
             self.n-=1
+            if 0 < self.n < self.capacity // 4:
+                self.resize(self.capacity // 2)
+            return val
             
             
             
