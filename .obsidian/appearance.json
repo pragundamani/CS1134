@@ -1,1 +1,10 @@
-{}
+{
+  "cssTheme": "AMOLED Serenity",
+  "accentColor": "#58bae4",
+  "showRibbon": true,
+  "textFontFamily": "JetBrainsMono Nerd Font",
+  "baseFontSizeAction": false,
+  "enabledCssSnippets": [
+    "latexsize"
+  ]
+}
