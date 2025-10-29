@@ -1,7 +1,7 @@
 {
   "cssTheme": "AMOLED Serenity",
   "accentColor": "#58bae4",
-  "showRibbon": true,
+  "showRibbon": false,
   "textFontFamily": "JetBrainsMono Nerd Font",
   "baseFontSizeAction": false,
   "enabledCssSnippets": [

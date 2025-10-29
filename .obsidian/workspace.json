@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "a4e5285cac525bfa",
+        "id": "05907e79d69c3951",
         "type": "tabs",
         "children": [
           {
-            "id": "731939ffaa30d8a5",
+            "id": "d7673577a9f631e3",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -74,7 +74,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 262.5
+    "width": 222.5
   },
   "right": {
     "id": "3c708652b0d8003b",
@@ -162,7 +162,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -177,8 +178,17 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "deb85a12fa4c1bd5",
+  "active": "d7673577a9f631e3",
   "lastOpenFiles": [
+    "labs hw/hw4/hw4.pdf",
+    "Excalidraw/hw4q2.excalidraw.md",
+    "labs hw/hw4/pd2752_hw4_q2.md",
+    "labs hw/hw4/pd2752_hw4_q2.png",
+    "Excalidraw/hw4 q1p2 recursive tree.excalidraw.md",
+    "labs hw/hw4/pd2752_hw4_q1.md",
+    "labs hw/hw4/pd2752_hw4_q1.pdf",
+    "Excalidraw/Drawing 2025-10-26 21.54.29.excalidraw.md",
+    "Excalidraw",
     "labs hw/L8/Lab_208_20-_20Worksheet.docx.pdf",
     "labs hw/L8/theory.md",
     "CS1134.md"
