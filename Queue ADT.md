@@ -5,4 +5,4 @@ aliases:
 tags: []
 ---
 # Queue ADT
-
+front_ind is very important
