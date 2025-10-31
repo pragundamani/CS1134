@@ -44,4 +44,72 @@ def test_mean_queue():
 #test_mean_queue()
 
 class ArrayDeque():
-   pass 
+    def __init__(self):
+        self.data = [None] * 4
+        self.front = 0
+        self.n = 0
+    def __len__(self): 
+        return self.n
+    def is_empty(self):
+        return self.n == 0
+    
+    def first(self):
+        if self.n == 0:
+            raise Exception("Queue is empty")
+        else:
+            return self.front
+    def last(self):
+        if self.n == 0:
+            raise Exception("Queue is empty")
+        else:
+            back = (self.front + self.n - 1) % len(self.data)
+            return self.data[back]
+
+    def enqueue_first(self, elem):
+        if self.n == len(self.data)-1:
+            self.data.append(elem)
+            self.front = elem  
+        else:
+            self.front = (self.front - 1) % len(self.data)
+            self.data[self.front] = elem
+            self.n += 1
+    def enqueue_last(self, elem):
+        if self.n == len(self.data)-1:
+            self.data.append(elem)
+        else:
+            back = (self.front + self.n) % len(self.data)
+            self.data[back] = elem
+            self.n += 1
+    
+    def dequeue_first(self):
+        if self.n == 0:
+            raise Exception("Queue is empty")
+        else:
+            res = self.front
+            self.data[self.front] = None
+            self.front = (self.front + 1) % len(self.data)
+            self.n -= 1
+            return res
+    def dequeue_last(self):
+        if self.n == 0:
+            raise Exception("Queue is empty")
+        else:
+            self.n -= 1
+            return self.data.pop()
+
+def test_array_deque():
+    d = ArrayDeque()
+    d.enqueue_last(1)
+    d.enqueue_last(2)
+    d.enqueue_last(3)
+    print("Deque after enqueuing last 1, 2, 3:", [d.data[i] for i in range(len(d.data))])
+    d.enqueue_first(0)
+    print("Deque after enqueuing first 0:", [d.data[i] for i in range(len(d.data))])
+    print("First element:", d.first())
+    print("Dequeue first:", d.dequeue_first())
+    print("Deque after dequeuing first:", [d.data[i] for i in range(len(d.data))])
+    print("Dequeue last:", d.dequeue_last())
+    print("Deque after dequeuing last:", [d.data[i] for i in range(len(d.data))])
+
+print("Testing ArrayDeque:")
+test_array_deque()
