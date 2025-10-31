@@ -57,7 +57,7 @@ class ArrayDeque():
         if self.n == 0:
             raise Exception("Queue is empty")
         else:
-            return self.front
+            return self.data[self.front]
     def last(self):
         if self.n == 0:
             raise Exception("Queue is empty")
@@ -66,9 +66,10 @@ class ArrayDeque():
             return self.data[back]
 
     def enqueue_first(self, elem):
-        if self.n == len(self.data)-1:
-            self.data.append(elem)
-            self.front = elem  
+        if self.n == len(self.data):
+            for i in range(len(self.data)//2):
+                self.data.append(None)
+            self.front= (self.front - len(self.data)) % len(self.data)
         else:
             self.front = (self.front - 1) % len(self.data)
             self.data[self.front] = elem
@@ -96,6 +97,7 @@ class ArrayDeque():
         else:
             self.n -= 1
             return self.data.pop()
+
 
 def test_array_deque():
     d = ArrayDeque()
