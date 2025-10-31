@@ -1,5 +1,6 @@
 # lab 9
-from ArrayQueue import ArrayQueue
+from ArrayQueue import *
+    
 class MeanQueue():
     def __init__(self):
         self.data = ArrayQueue()
@@ -42,4 +43,5 @@ def test_mean_queue():
 #print("Testing MeanQueue:")
 #test_mean_queue()
 
-
+class ArrayDeque():
+   pass 

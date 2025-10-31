@@ -8,7 +8,7 @@ class StaticArrayQueue:
         self.data_arr = make_array(max_cap)
         self.capacity = max_cap
         self.n = 0
-        self.front_ind = None
+        self.front_ind = 0
 
     def __len__(self):
         return self.n
