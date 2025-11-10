@@ -5,7 +5,7 @@ def postfix_calculator(exp):
     
     def is_var(s):
         flag1 = not isinstance(s, int)
-        flag2 = s not in '+-*/='
+        flag2 = str(s) not in '+-*/='
         return flag1 and flag2
 
     
@@ -32,18 +32,21 @@ def postfix_calculator(exp):
             numsstack.push(token)
         except:
             print(token,is_var(token))
-            if is_var(token):
-                if token in vars:
-                    numsstack.push(int(vars_vals[vars.index(token)]))
-                else:
-                    val = tokens[tokens.index(token) + 2]
-                    vars.append(token)
-                    vars_vals.append(int(val))
-                    numsstack.push(val)
-            elif token in '+-*/':
-                eval(token, numsstack)
-            elif token == '=':
-                pass
+        
+        if is_var(token):
+            if token in vars:
+                numsstack.push(vars_vals[vars.index(token)])
+            else:
+                val = tokens[tokens.index(token) + 2]
+                print(val)
+                vars.append(token)
+                vars_vals.append(val)
+                numsstack.push(val)
+        elif str(token) in '+-*/':
+            eval(token, numsstack)
+        elif token == '=':
+            pass
+
     return numsstack.pop()
 
 exp = ""
