@@ -4,11 +4,15 @@ from ArrayStack import ArrayStack
 def postfix_calculator(exp):
     
     def is_var(s):
-        return not(isinstance(s, int) or s in '+-*/=')
+        flag1 = not isinstance(s, int)
+        flag2 = s not in '+-*/='
+        return flag1 and flag2
+
     
     def eval(token, numsstack):
-        b = numsstack.pop()
-        a = numsstack.pop()
+        b = (numsstack.pop())
+        a = int(numsstack.pop())
+        print(a,b)
         if token == '+':
             numsstack.push(a + b)
         elif token == '-':
@@ -23,22 +27,27 @@ def postfix_calculator(exp):
     tokens = exp.split()
 
     for token in tokens:
-        if isinstance(token, int):
+        try:
+            token = int(token)
             numsstack.push(token)
-        elif is_var(token):
-            if token in vars:
-                numsstack.push(vars_vals[vars.index(token)])
-            else:
-                val = tokens[tokens.index(token) + 4]
-                vars.append(token)
-                vars_vals.append(val)
-                numsstack.push(val)
-        elif token in '+-*/':
-            eval(token, numsstack)
-        elif token == '=':
-            pass
+        except:
+            print(token,is_var(token))
+            if is_var(token):
+                if token in vars:
+                    numsstack.push(int(vars_vals[vars.index(token)]))
+                else:
+                    val = tokens[tokens.index(token) + 2]
+                    vars.append(token)
+                    vars_vals.append(int(val))
+                    numsstack.push(val)
+            elif token in '+-*/':
+                eval(token, numsstack)
+            elif token == '=':
+                pass
     return numsstack.pop()
 
-exp = "x 3 = y 4 = x y +"
-result = postfix_calculator(exp)
-print(result)  # Output should be 7
+exp = ""
+while exp != 'done()':
+    exp = input("--> ")
+    print(postfix_calculator(exp))
+
