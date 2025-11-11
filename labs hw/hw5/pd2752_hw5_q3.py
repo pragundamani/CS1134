@@ -41,6 +41,4 @@ class MidStack:
     def mid_push(self, item):
         if len(self.back) > len(self.front):
             self.front.push(self.back.dequeue_first())
-        else:
-            self.back.enqueue_first(item)
-    
+        self.back.enqueue_first(item)

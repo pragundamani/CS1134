@@ -1,6 +1,7 @@
+#pd2751
 from ArrayStack import ArrayStack
 
-def evaluate_postfix(tokens,var_names,var_values):
+def evaluate_postfix(tokens, var_names, var_values):
     stack = ArrayStack()
     for token in tokens:
         if token in '+-*/':
@@ -26,7 +27,7 @@ def evaluate_postfix(tokens,var_names,var_values):
                 stack.push(val)
     return stack.pop()
 
-def set_var_value(name,value,var_names,var_values):
+def set_var_value(name, value, var_names, var_values):
     for i, v in enumerate(var_names):
         if v == name:
             var_values[i] = value
@@ -49,11 +50,11 @@ while True:
     if not line:
         continue
     tokens = line.split()
-    if len(tokens) >= 3 and tokens[1] == '=':
-        var_name = tokens[0]
-        value = evaluate_postfix(tokens[2:],var_names,var_values)
-        set_var_value(var_name,value,var_names,var_values)
+    if len(tokens) >= 2 and tokens[1] == '=':
+        var_name = tokens[-1]
+        value = evaluate_postfix(tokens[1:], var_names, var_values)
+        set_var_value(var_name, value, var_names, var_values)
         print(var_name)
     else:
-        value = evaluate_postfix(tokens,var_names,var_values)
+        value = evaluate_postfix(tokens, var_names, var_values)
         print(format_number(value))
