@@ -1,2 +1,1 @@
-def check(root,n):
-    if 
+def check(root):
