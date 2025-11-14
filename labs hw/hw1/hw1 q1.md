@@ -1,1 +1,0 @@
-![[hw1q1.excalidraw|800]]
