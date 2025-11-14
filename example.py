@@ -1,3 +1,1 @@
-from ArrayQueue import ArrayQueue
-
-
+def check(root):
