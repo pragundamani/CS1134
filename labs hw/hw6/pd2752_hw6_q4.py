@@ -1,24 +1,24 @@
 from DoublyLinkedList import DoublyLinkedList
 
-def copy_linked_list(lnk_lst):
-    new_list = DoublyLinkedList()
-    cursor = lnk_lst.header.next
+def copy_linked_list(dll):
+    res = DoublyLinkedList()
+    curr = dll.header.next
     
-    while cursor is not lnk_lst.trailer:
-        new_list.add_last(cursor.data)
-        cursor = cursor.next
+    while curr is not dll.trailer:
+        res.add_last(curr.data)
+        curr = curr.next
     
-    return new_list
+    return res
 
-def deep_copy_linked_list(lnk_lst):
-    new_list = DoublyLinkedList()
-    cursor = lnk_lst.header.next
+def deep_copy_linked_list(dll):
+    res = DoublyLinkedList()
+    curr = dll.header.next
     
-    while cursor is not lnk_lst.trailer:
-        if isinstance(cursor.data, DoublyLinkedList):
-            new_list.add_last(deep_copy_linked_list(cursor.data))
+    while curr is not dll.trailer:
+        if isinstance(curr.data, DoublyLinkedList):
+            res.add_last(deep_copy_linked_list(curr.data))
         else:
-            new_list.add_last(cursor.data)
-        cursor = cursor.next
+            res.add_last(curr.data)
+        curr = curr.next
     
-    return new_list
+    return res
