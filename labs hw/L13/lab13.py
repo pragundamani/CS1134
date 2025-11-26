@@ -39,4 +39,23 @@ def bst_copy_check(bst1,bst2):
         if not node_check(i):
             return False
         
-def 
+def is_bst(root):
+    if root is None:
+        return True
+    def helper(root):
+        min,max = root, root
+        if root.left is not None:
+            min = root.left
+        if root.right is not None:
+            max = root.right
+        return min,max,True
+    
+    if root.left is not None and root.left>root:
+        return False
+    if root.right is not None and root.right<root:
+        return False
+    vals = helper(root)
+    if root<vals[0] or root>vals[1]:
+        return False
+    return is_bst(root.left) and is_bst(root.right)
+
