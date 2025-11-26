@@ -24,8 +24,6 @@ def is_complete(root):
     return True
 
 # Q2
-
-
 def clean_subtree(root):
     if root is None:
         return None
