@@ -1,39 +1,24 @@
-from ArrayQueue import ArrayQueue
+# from ArrayQueue import ArrayQueue
 
 # Q1
 def is_complete(root):
     if root is None:
         return True
-
-    queue = ArrayQueue()
-    queue.enqueue(root)
-    seen_none = False
-
-    while not queue.is_empty():
-        node = queue.dequeue()
-
-        if node is None:
-            seen_none = True
-        else:
-            if seen_none:
-                return False
-
-            queue.enqueue(node.left)
-            queue.enqueue(node.right)
-
-    return True
+    if root.left is None and root.right is None:
+        return True
+    elif root.left is not None and root.right is not None:
+        return is_complete(root.left) and is_complete(root.right)
+    else:
+        return False
 
 # Q2
 def clean_subtree(root):
     if root is None:
         return None
-
     root.left = clean_subtree(root.left)
     root.right = clean_subtree(root.right)
-
     if root.data != 1 and root.left == None and root.right == None:
         return None
-
     return root
 
 
