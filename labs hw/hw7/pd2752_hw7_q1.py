@@ -1,19 +1,18 @@
 #q1 answer pd2752
-def subtree_min_and_max(bin_tree):
+def min_and_max(bin_tree):
     if bin_tree.is_empty():
         return None, None
     
-    minmax = [float('inf'), float('-inf')]
+    minmax = [bin_tree.root.data]*2
     
-    def recursive_helper(root):
+    def subtree_min_and_max(root):
         if root is None:
-            return None,None
+            return bin_tree.root.data, bin_tree.root.data
         if root.data < minmax[0]:
             minmax[0] = root.data
         if root.data > minmax[1]:
             minmax[1] = root.data
-        recursive_helper(root.left)
-        recursive_helper(root.right)
-        return min,max
-    return recursive_helper(bin_tree.root)
-
+        subtree_min_and_max(root.left)
+        subtree_min_and_max(root.right)
+        return minmax[0],minmax[1]
+    return subtree_min_and_max(bin_tree.root)
