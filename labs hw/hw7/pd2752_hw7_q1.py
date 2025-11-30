@@ -1,7 +1,7 @@
 #q1 answer pd2752
 def min_and_max(bin_tree):
     if bin_tree.is_empty():
-        return None, None
+        raise Exception("Tree is empty")
     
     minmax = [bin_tree.root.data]*2
     
