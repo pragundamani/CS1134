@@ -139,7 +139,7 @@ class LinkedBinaryTree:
                     node = node.right
                     while node.left is not None:
                         node = node.left
-        leftnode = go_left
+        leftnode = go_left(self.root)
         yield from add_to_gen(leftnode)
         curr_node = leftnode.parent
         yield from add_steps(curr_node)
