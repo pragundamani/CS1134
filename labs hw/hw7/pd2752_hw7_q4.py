@@ -124,28 +124,4 @@ class LinkedBinaryTree:
     def iterative_inorder(self):
         # first we keep going left till we find a leagf
         # then we go up -> right -> up -> up -> left/right
-        def add_to_gen(node):
-            yield node.left.data 
-            yield node.data
-            yield node.right.data
-        def go_left(node):
-            while node.left is not None:
-                node = node.left
-            return node.parent
-        def add_steps(node):
-            while node.parent is not None:
-                yield node.data
-                if node.right is not None:
-                    node = node.right
-                    node = go_left(node)
-                    yield from add_to_gen(node)
-        leftnode = go_left(self.root)
-        yield from add_to_gen(leftnode)
-        curr_node = leftnode.parent
-        yield from add_steps(curr_node)
-        yield self.root
-        rightnode = self.root.right
-        curr_node = go_left(rightnode)
-        yield from add_to_gen(curr_node)
-        curr_node = curr_node.parent
-        yield from add_steps(curr_node)
+        pass
