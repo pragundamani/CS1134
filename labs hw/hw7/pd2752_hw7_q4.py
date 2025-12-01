@@ -137,8 +137,8 @@ class LinkedBinaryTree:
                 yield node.data
                 if node.right is not None:
                     node = node.right
-                    while node.left is not None:
-                        node = node.left
+                    node = go_left(node)
+                    yield from add_to_gen(node)
         leftnode = go_left(self.root)
         yield from add_to_gen(leftnode)
         curr_node = leftnode.parent
