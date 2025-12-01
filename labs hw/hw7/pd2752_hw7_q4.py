@@ -1,5 +1,4 @@
 #q4 answer pd2752
-from platform import node
 from ArrayQueue import ArrayQueue
 
 class LinkedBinaryTree:
@@ -120,8 +119,27 @@ class LinkedBinaryTree:
     def __iter__(self):
         for node in self.breadth_first():
             yield node.data
-            
+
     def iterative_inorder(self):
-        # first we keep going left till we find a leagf
-        # then we go up -> right -> up -> up -> left/right
-        pass
+        if self.is_empty():
+            return
+        def get_leftmost(node):
+            current = node
+            while current.left is not None:
+                current = current.left
+            return current
+        def left_child(node):
+            return node.parent is not None and node.parent.left == node
+        def next_inorder(node):
+            if node.right is not None:
+                return get_leftmost(node.right)
+            current = node
+            while current.parent is not None:
+                if left_child(current):
+                    return current.parent
+                current = current.parent
+            return None
+        current = get_leftmost(self.root)
+        while current is not None:
+            yield current.data
+            current = next_inorder(current)
