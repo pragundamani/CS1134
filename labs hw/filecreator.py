@@ -1,15 +1,19 @@
 import argparse
+import re
 import sys
 from pathlib import Path
-import re
 
 # Base directory for all folders
-BASE_DIR = Path(r"./labs hw").expanduser().resolve()
+BASE_DIR = Path(r"./").expanduser().resolve()
 
-def prompt_if_missing(folder_arg: str | None, number_arg: str | None) -> tuple[str, str]:
-    folder = folder_arg or input(f"Enter folder: ").strip()
+
+def prompt_if_missing(
+    folder_arg: str | None, number_arg: str | None
+) -> tuple[str, str]:
+    folder = folder_arg or input("Enter folder: ").strip()
     number = number_arg or input("Enter homework number (digits only): ").strip()
     return folder, number
+
 
 def validate_inputs(folder: str, number: str) -> tuple[Path, str]:
     raw = Path((folder or "").strip())
@@ -34,9 +38,11 @@ def validate_inputs(folder: str, number: str) -> tuple[Path, str]:
         sys.exit(1)
     return p.resolve(), number
 
+
 def is_hw_pdf(name: str, number: str) -> bool:
     # Skip any file named exactly hw{number}.pdf (case-insensitive)
-    return re.fullmatch(fr"hw{re.escape(number)}\.pdf", name, re.IGNORECASE) is not None
+    return re.fullmatch(rf"hw{re.escape(number)}\.pdf", name, re.IGNORECASE) is not None
+
 
 # Prompt helper for yes/no
 def ask_yes_no(message: str, default: bool | None = False) -> bool:
@@ -55,17 +61,24 @@ def ask_yes_no(message: str, default: bool | None = False) -> bool:
             return False
         print("Please answer y or n.")
 
+
 # New helpers to validate range and create q-files
 def validate_q_range(q_start: int, q_end: int) -> tuple[int, int]:
     if not isinstance(q_start, int) or not isinstance(q_end, int):
         print("Question numbers must be integers.", file=sys.stderr)
         sys.exit(1)
     if q_start < 1 or q_end < 1 or q_start > q_end:
-        print("Invalid question range. Ensure start/end are >= 1 and start <= end.", file=sys.stderr)
+        print(
+            "Invalid question range. Ensure start/end are >= 1 and start <= end.",
+            file=sys.stderr,
+        )
         sys.exit(1)
     return q_start, q_end
 
-def create_q_files(folder: Path, number: str, q_start: int, q_end: int) -> tuple[int, int, int]:
+
+def create_q_files(
+    folder: Path, number: str, q_start: int, q_end: int
+) -> tuple[int, int, int]:
     created = skipped = errors = 0
     for q in range(q_start, q_end + 1):
         fname = f"pd2752_hw{number}_q{q}.py"
@@ -83,6 +96,7 @@ def create_q_files(folder: Path, number: str, q_start: int, q_end: int) -> tuple
             print(f"Failed to create {fname}: {e}", file=sys.stderr)
             errors += 1
     return created, skipped, errors
+
 
 # New: creators for lab/hw structures under BASE_DIR
 def create_lab_structure(base_dir: Path, number: str) -> tuple[int, int, int]:
@@ -103,7 +117,9 @@ def create_lab_structure(base_dir: Path, number: str) -> tuple[int, int, int]:
         return created, skipped, errors
 
     lab_py = lab_dir / f"lab{number}.py"
-    theory_md = lab_dir / "thory.md"  # intentional? If 'theory.md' is desired, change filename accordingly
+    theory_md = (
+        lab_dir / "thory.md"
+    )  # intentional? If 'theory.md' is desired, change filename accordingly
     # Correct the filename to 'theory.md'
     theory_md = lab_dir / "theory.md"
 
@@ -123,6 +139,7 @@ def create_lab_structure(base_dir: Path, number: str) -> tuple[int, int, int]:
             errors += 1
     return created, skipped, errors
 
+
 def create_hw_structure(base_dir: Path, number: str) -> tuple[int, int, int]:
     created = skipped = errors = 0
     hw_dir = base_dir / f"hw{number}"
@@ -139,12 +156,20 @@ def create_hw_structure(base_dir: Path, number: str) -> tuple[int, int, int]:
         errors += 1
     return created, skipped, errors
 
+
 def main(argv: list[str]) -> int:
-    ap = argparse.ArgumentParser(description="Prefix files with pd2752_hw{N}_ while skipping hw{N}.pdf.")
+    ap = argparse.ArgumentParser(
+        description="Prefix files with pd2752_hw{N}_ while skipping hw{N}.pdf."
+    )
     ap.add_argument("--folder", "-f", help="Folder containing files to rename")
     ap.add_argument("--number", "-n", help="Homework number (digits only)")
     # New flags for creating q-files
-    ap.add_argument("--make-q-files", "-q", action="store_true", help="Create files pd2752_hw{N}_q{q}.py for a question range")
+    ap.add_argument(
+        "--make-q-files",
+        "-q",
+        action="store_true",
+        help="Create files pd2752_hw{N}_q{q}.py for a question range",
+    )
     ap.add_argument("--q-start", type=int, help="Starting question number (inclusive)")
     ap.add_argument("--q-end", type=int, help="Ending question number (inclusive)")
     args = ap.parse_args(argv)
@@ -233,15 +258,20 @@ def main(argv: list[str]) -> int:
             s_created, s_skipped, s_errors = create_lab_structure(BASE_DIR, number)
         else:
             s_created, s_skipped, s_errors = create_hw_structure(BASE_DIR, number)
-        print(f"Structure summary: Created: {s_created}, Skipped: {s_skipped}, Errors: {s_errors}")
+        print(
+            f"Structure summary: Created: {s_created}, Skipped: {s_skipped}, Errors: {s_errors}"
+        )
 
     # Summaries and exit code
     print(f"Rename summary: Renamed: {renamed}, Skipped: {skipped}, Errors: {errors}")
     if create_qs:
-        print(f"Create summary: Created: {created}, Skipped: {c_skipped}, Errors: {c_errors}")
+        print(
+            f"Create summary: Created: {created}, Skipped: {c_skipped}, Errors: {c_errors}"
+        )
     overall_errors = errors + c_errors + s_errors
     print("Done.")
     return 0 if overall_errors == 0 else 2
+
 
 if __name__ == "__main__":
     raise SystemExit(main(sys.argv[1:]))
