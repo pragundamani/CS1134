@@ -11,10 +11,12 @@
             "id": "d7673577a9f631e3",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "New tab"
+              "type": "pdf",
+              "state": {
+                "file": "labs hw/hw8/hw8.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "hw8"
             }
           }
         ]
@@ -74,7 +76,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 222.5
+    "width": 222.5,
+    "collapsed": true
   },
   "right": {
     "id": "3c708652b0d8003b",
@@ -153,8 +156,8 @@
             "state": {
               "type": "git-view",
               "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
+              "icon": "lucide-ghost",
+              "title": "git-view"
             }
           }
         ],
@@ -173,23 +176,30 @@
       "canvas:Create new canvas": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "obsidian-git:Open Git source control": false,
       "callout-manager:Insert Callout": false,
-      "obsidian-excalidraw-plugin:New drawing": false
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "obsidian-git:Open Git source control": false
     }
   },
   "active": "d7673577a9f631e3",
   "lastOpenFiles": [
-    "labs hw/hw4/hw4.pdf",
+    "labs hw/hw8/test_q5_only.py",
+    "labs hw/hw8/pd2752_BinarySearchTreeMap.py",
+    "labs hw/hw8/__pycache__/pd2752_BinarySearchTreeMap.cpython-313.pyc",
+    "labs hw/hw8/__pycache__/pd2752_hw8_q4.cpython-313.pyc",
+    "labs hw/hw8/test_temp.py",
+    "labs hw/hw8/q.pdf",
+    "labs hw/hw8/test_q3.py",
+    "labs hw/hw8/__pycache__/pd2752_hw8_q3.cpython-313.pyc",
+    "labs hw/hw8/__pycache__/BinarySearchTreeMap.cpython-313.pyc",
+    "labs hw/hw8/__pycache__/BinarySearchTreeMap.cpython-313.pyc.2653378817472",
+    "labs hw/hw8/__pycache__/pd2752_hw8_q2.cpython-313.pyc",
     "Excalidraw/hw4q2.excalidraw.md",
     "labs hw/hw4/pd2752_hw4_q2.md",
     "labs hw/hw4/pd2752_hw4_q2.png",
     "Excalidraw/hw4 q1p2 recursive tree.excalidraw.md",
     "labs hw/hw4/pd2752_hw4_q1.md",
-    "labs hw/hw4/pd2752_hw4_q1.pdf",
     "Excalidraw/Drawing 2025-10-26 21.54.29.excalidraw.md",
-    "Excalidraw",
-    "labs hw/L8/Lab_208_20-_20Worksheet.docx.pdf",
     "labs hw/L8/theory.md",
     "CS1134.md"
   ]
